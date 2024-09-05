@@ -7,22 +7,18 @@ using namespace std;
 
 // } Driver Code Ends
 // User function template for C++
+#include <numeric>
 class Solution {
   public:
 
     // Note that the size of the array is n-1
     int missingNumber(int n, vector<int>& arr) {
-        int sum1 = 0;
-        for(int i = 1; i <= n; i++){
-            sum1 = sum1 + i;
-        }
+
+        // Your code goes here
+        int sum = accumulate(arr.begin(), arr.end(), 0);
+        int tempSum = (n * ( n + 1 ) / 2) ;
         
-        int sum = 0;
-        for(int i = 0; i < arr.size(); i++){
-            sum = sum + arr[i];
-        }
-        int element = sum1 - sum;
-        return element;
+        return (tempSum - sum);
     }
 };
 
