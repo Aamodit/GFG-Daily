@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int countConsec(int n) {
+        vector<int> dp0(n + 1), dp1(n + 1);
+        dp0[1] = 1;
+        dp1[1] = 1;
+        
+        for(int i = 2; i <= n; i++) {
+            dp0[i] = dp0[i - 1] + dp1[i - 1];
+            dp1[i] = dp0[i - 1];
+        }
+        
+        int total = 1 << n; // 2^n
+        int valid = dp0[n] + dp1[n]; // no consecutive 1s
+        return total - valid;
+    }
+};
