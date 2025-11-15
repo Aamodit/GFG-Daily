@@ -1,0 +1,32 @@
+class Solution {
+  public:
+    int LCIS(vector<int> &a, vector<int> &b) {
+        int n=a.size();
+        int m=b.size();
+        
+        vector<int> dp(m,0);  // dp[j] = LCIS ending at b[j]
+        
+        for(int i=0;i<n;i++){
+            int currMax=0;
+            
+            for(int j=0;j<m;j++) {
+                
+                if(a[i]==b[j]){
+                    dp[j]=currMax+1;
+                }
+                
+                if(a[i]>b[j]){
+                    currMax=max(currMax,dp[j]);
+                }
+            }
+        }
+        
+        int ans=0;
+        
+        for(int x : dp){
+            ans=max(ans,x);
+        }
+        
+        return ans;
+    }
+};
