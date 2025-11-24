@@ -1,0 +1,12 @@
+class Solution {
+  public:
+    int subarrayXor(vector<int>& a) {
+        // code here
+        int ans=a[0];
+        if(a.size()%2==0)return 0;
+        for(int i=2;i<a.size();i+=2){
+            ans^=a[i];
+        }
+        return ans;
+    }
+};
