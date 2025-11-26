@@ -1,0 +1,17 @@
+class Solution {
+  public:
+    int subsetXORSum(vector<int>& arr) {
+        // code here
+        int ans=0;
+        int n=arr.size();
+        
+        for(int i=0;i<n;i++){
+            ans=ans|arr[i];
+        }
+        
+        int val=(1<<(n-1));
+        
+        return (val*ans);
+
+    }
+};
