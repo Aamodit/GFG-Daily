@@ -14,21 +14,16 @@ public:
 
 class Solution {
   public:
-    int help(Node *root, int &ans) {
-        if (!root) return 0;
-        
-        int l = help(root->left, ans);
-        int r = help(root->right, ans);
-        
-        ans += abs(l) + abs(r);
-        
-        return root->data - 1 + l + r;
+    int ans = 0;
+    int solve(Node* root){
+        if(!root)return 0;
+        int left = solve(root->left);
+        int right = solve(root->right);
+        ans += abs((root->data+left+right) - 1);
+        return (root->data+left+right)-1;
     }
-    
     int distCandy(Node* root) {
-        // code here
-        int ans = 0;
-        help(root, ans);
+        solve(root);
         return ans;
     }
 };
